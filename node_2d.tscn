@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bbjhl6yk626kd"]
+
+[ext_resource type="PackedScene" uid="uid://c4g6j57r4g2l4" path="res://Platforms/platform.tscn" id="1_0e48y"]
+[ext_resource type="PackedScene" uid="uid://b1ibmavp4ufgu" path="res://Character/character.tscn" id="2_epypp"]
+
+[node name="Node2D" type="Node2D" unique_id=453418178]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=641115070]
+anchor_mode = 0
+
+[node name="Character" parent="." unique_id=2044068962 instance=ExtResource("2_epypp")]
+position = Vector2(544, 306)
+jump_speed = 1000
+
+[node name="Platform2" parent="." unique_id=1108542764 instance=ExtResource("1_0e48y")]
+position = Vector2(526, 374)
+
+[node name="Platform3" parent="." unique_id=1976958629 instance=ExtResource("1_0e48y")]
+position = Vector2(790, 299)
+
+[node name="Platform4" parent="." unique_id=562355951 instance=ExtResource("1_0e48y")]
+position = Vector2(416, 304)
+
+[node name="Platform5" parent="." unique_id=1523365215 instance=ExtResource("1_0e48y")]
+position = Vector2(551, 219)
+
+[node name="Platform" parent="." unique_id=1671949164 instance=ExtResource("1_0e48y")]
+position = Vector2(636, 430)

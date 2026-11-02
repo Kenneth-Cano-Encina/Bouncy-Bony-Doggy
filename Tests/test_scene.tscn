@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://cpyde6j3j60r4"]
+
+[ext_resource type="PackedScene" uid="uid://b1ibmavp4ufgu" path="res://Character/character.tscn" id="1_1gskb"]
+[ext_resource type="PackedScene" uid="uid://c4g6j57r4g2l4" path="res://Platforms/platform.tscn" id="2_x33mw"]
+[ext_resource type="Script" uid="uid://cs6f3hykslykf" path="res://Tests/timer.gd" id="3_r6dap"]
+
+[sub_resource type="GDScript" id="GDScript_1gskb"]
+script/source = "extends AnimatableBody2D
+@onready var platform = $\".\"
+
+@export var original_speed:int 
+var game_manager:GameManager
+var path:Vector2i
+var velocity:float
+
+#===========================================================
+var detener:bool
+#===========================================================
+
+func _ready() -> void:
+	path = Vector2i(-10000, platform.position.y)
+	game_manager = get_tree().get_first_node_in_group(\"GameManager\")
+	original_speed = 0
+	velocity = original_speed
+	
+	
+func _physics_process(delta: float) -> void:
+	#======================================================================
+	var stop = Input.is_action_pressed(\"Stop_moving_debug\")
+	stop_moving_debug()
+	if stop:
+		original_speed = 560
+		
+	#======================================================================
+	if game_manager != null and not stop:
+		if game_manager.global_time >= 30 \\
+		and game_manager.global_time < 60:
+			velocity = original_speed * 1.5
+			
+		elif game_manager.global_time >= 60 \\
+		and game_manager.global_time < 120:
+			velocity = original_speed * 2
+			
+		elif game_manager.global_time >= 90 \\
+		and game_manager.global_time < 120:
+			velocity = original_speed * 2.5 
+			
+		elif game_manager.global_time >= 120 \\
+		and game_manager.global_time < 180:
+			velocity = original_speed * 3
+			
+		elif game_manager.global_time >= 180:
+			velocity = original_speed * 3.5 
+			
+	global_position = global_position.move_toward(path, velocity * delta)
+	if position.x == path.x:
+		queue_free()
+		
+		
+		
+#======================================================================
+func stop_moving_debug(): #DEBUG FUNTION
+	var stop = Input.is_action_pressed(\"Stop_moving_debug\")
+	if stop or detener:
+		velocity = 0
+		
+	else:
+		velocity = original_speed
+#======================================================================
+"
+
+[node name="test_scene" type="Node2D" unique_id=1037440363]
+
+[node name="Character" parent="." unique_id=2044068962 instance=ExtResource("1_1gskb")]
+position = Vector2(520, 305)
+
+[node name="Camera2D" type="Camera2D" parent="Character" unique_id=401125481]
+position = Vector2(28, 55)
+zoom = Vector2(0.8, 0.8)
+limit_top = 0
+limit_bottom = 648
+
+[node name="Platform" parent="." unique_id=2001468020 instance=ExtResource("2_x33mw")]
+position = Vector2(542, 359)
+original_speed = 560
+
+[node name="Platform2" parent="." unique_id=256443957 instance=ExtResource("2_x33mw")]
+position = Vector2(969, 157)
+
+[node name="Timer" type="Timer" parent="." unique_id=1862717742]
+one_shot = true
+autostart = true
+script = ExtResource("3_r6dap")
+
+[node name="Platform3" parent="." unique_id=1353468423 instance=ExtResource("2_x33mw")]
+position = Vector2(602, 99)
+script = SubResource("GDScript_1gskb")
+original_speed = 0
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

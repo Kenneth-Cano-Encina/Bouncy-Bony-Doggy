@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dcdw8diaxjxys"]
+
+[ext_resource type="Script" uid="uid://dibwcvd742f8m" path="res://GameManager/game_manager.gd" id="1_5dfvm"]
+
+[node name="GameManager" type="Node" unique_id=616724099 groups=["GameManager"]]
+script = ExtResource("1_5dfvm")
+
+[node name="Global_timer" type="Timer" parent="." unique_id=247437550]
+autostart = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="Global_timer" to="." method="_on_global_timer_timeout"]

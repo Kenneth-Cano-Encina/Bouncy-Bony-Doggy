@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bqlel6km451qq"]
+
+[ext_resource type="Texture2D" uid="uid://1ehb3830ocx2" path="res://sprites/tile_gem.png" id="1_0lg78"]
+
+[sub_resource type="GDScript" id="GDScript_g4mvs"]
+script/source = "class_name Gem
+extends Area2D
+
+var game_manager:GameManager
+@onready var gem: Area2D = $\".\"
+
+
+func _ready() -> void:
+	game_manager = get_tree().get_first_node_in_group(\"GameManager\")
+	
+func _process(delta: float) -> void:
+	pass
+	
+func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body is Character and game_manager != null:
+		game_manager.collect_gem()
+		queue_free()
+		
+		
+		
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_edvqy"]
+radius = 17.0
+
+[node name="Gem" type="Area2D" unique_id=169254872]
+script = SubResource("GDScript_g4mvs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1013984726]
+self_modulate = Color(1, 0, 0.047058824, 1)
+show_behind_parent = true
+texture = ExtResource("1_0lg78")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=376811984]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_edvqy")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

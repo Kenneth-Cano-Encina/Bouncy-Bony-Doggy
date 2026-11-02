@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cfqy2bh71lyob"]
+
+[ext_resource type="Script" uid="uid://cin0m7als8mjj" path="res://Platforms/platforms_spawner.gd" id="1_afi0e"]
+[ext_resource type="Texture2D" uid="uid://bwrwv1h5en6qd" path="res://sprites/effect_shotLarge.png" id="2_3h4ny"]
+
+[node name="Platform_spawner" type="Node2D" unique_id=181945643]
+position = Vector2(537, 0)
+script = ExtResource("1_afi0e")
+
+[node name="Spawn_cooldown" type="Timer" parent="." unique_id=314099469]
+one_shot = true
+autostart = true
+
+[node name="EffectShotLarge" type="Sprite2D" parent="." unique_id=1408812076]
+position = Vector2(8.0921865e-07, 331.48724)
+rotation = 1.5707964
+scale = Vector2(10.578526, 0.156)
+texture = ExtResource("2_3h4ny")

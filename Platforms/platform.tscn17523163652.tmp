@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c4g6j57r4g2l4"]
+
+[ext_resource type="Texture2D" uid="uid://dj2kd6emjpx6n" path="res://sprites/tile_bridge.png" id="1_hy6d6"]
+[ext_resource type="Script" uid="uid://p2mi6qamrkxq" path="res://Platforms/platform.gd" id="1_u1pbg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tijv3"]
+size = Vector2(64, 22)
+
+[node name="Platform" type="AnimatableBody2D" unique_id=2001468020]
+script = ExtResource("1_u1pbg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1375536785]
+texture = ExtResource("1_hy6d6")
+region_enabled = true
+region_rect = Rect2(0, 0, 64.06612, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032772288]
+shape = SubResource("RectangleShape2D_tijv3")
+one_way_collision = true

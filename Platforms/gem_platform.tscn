@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://lg61magmqwfc"]
+
+[ext_resource type="PackedScene" uid="uid://c4g6j57r4g2l4" path="res://Platforms/platform.tscn" id="1_wk7rm"]
+[ext_resource type="PackedScene" uid="uid://bqlel6km451qq" path="res://Gems/gem.tscn" id="2_wdavw"]
+
+[node name="Gem_Platform" unique_id=2001468020 instance=ExtResource("1_wk7rm")]
+
+[node name="Gem" parent="." index="2" unique_id=169254872 instance=ExtResource("2_wdavw")]
+position = Vector2(0, -46)

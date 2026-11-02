@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bbjhl6yk626kd"]
+
+[ext_resource type="PackedScene" uid="uid://dcdw8diaxjxys" path="res://GameManager/game_manager.tscn" id="1_xl2ui"]
+[ext_resource type="PackedScene" uid="uid://cfqy2bh71lyob" path="res://Platforms/platform_spawner.tscn" id="2_vp2e1"]
+[ext_resource type="PackedScene" uid="uid://b1ibmavp4ufgu" path="res://Character/character.tscn" id="3_3mwku"]
+[ext_resource type="Texture2D" uid="uid://bwrwv1h5en6qd" path="res://sprites/effect_shotLarge.png" id="4_bxfix"]
+[ext_resource type="PackedScene" uid="uid://c4g6j57r4g2l4" path="res://Platforms/platform.tscn" id="5_lqks1"]
+
+[node name="Node2D" type="Node2D" unique_id=453418178]
+
+[node name="GameManager" parent="." unique_id=616724099 instance=ExtResource("1_xl2ui")]
+
+[node name="Platform_spawner" parent="." unique_id=181945643 instance=ExtResource("2_vp2e1")]
+position = Vector2(1300, 0)
+
+[node name="Character" parent="." unique_id=2044068962 instance=ExtResource("3_3mwku")]
+position = Vector2(544, 306)
+
+[node name="DEBUG_Camera2D" type="Camera2D" parent="." unique_id=896860029]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(555, 313)
+enabled = false
+zoom = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="DEBUG_Camera2D" unique_id=843265959]
+position = Vector2(13, -406)
+scale = Vector2(18.765625, 1)
+texture = ExtResource("4_bxfix")
+
+[node name="Sprite2D2" type="Sprite2D" parent="DEBUG_Camera2D" unique_id=2018298113]
+position = Vector2(10, 404)
+scale = Vector2(18.765625, 1)
+texture = ExtResource("4_bxfix")
+
+[node name="Platforms" type="Node2D" parent="." unique_id=25976925]
+
+[node name="Platform2" parent="Platforms" unique_id=1108542764 instance=ExtResource("5_lqks1")]
+position = Vector2(526, 374)
+
+[node name="Platform3" parent="Platforms" unique_id=1976958629 instance=ExtResource("5_lqks1")]
+position = Vector2(790, 299)
+
+[node name="Platform4" parent="Platforms" unique_id=562355951 instance=ExtResource("5_lqks1")]
+position = Vector2(416, 304)
+
+[node name="Platform5" parent="Platforms" unique_id=1523365215 instance=ExtResource("5_lqks1")]
+position = Vector2(551, 219)
+
+[node name="Platform" parent="Platforms" unique_id=1671949164 instance=ExtResource("5_lqks1")]
+position = Vector2(636, 430)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1766489075]
+position = Vector2(576, 312)
+zoom = Vector2(0.8, 0.8)

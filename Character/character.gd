@@ -12,12 +12,17 @@ func _physics_process(delta: float) -> void:
 	move()
 	actual_velocity_y = velocity.y
 	
-	if not is_on_floor():
+	var fly_debug = Input.is_action_pressed("Fly_debug")
+	if not is_on_floor() and not fly_debug:
 		velocity.y += gravity_aceleration * delta
 		
 	if position.y > 2000:
 		position.y = -100
-		velocity.y = gravity_aceleration
+		velocity.y = gravity_aceleration/2
+	if fly_debug:
+		var fly_direction = Input.get_axis("Jump", "Down")
+		velocity.y = speed * fly_direction
+		speed = 700
 		
 func jump():
 	var jump_pressed = Input.is_action_just_pressed("Jump")
@@ -26,8 +31,7 @@ func jump():
 		jumps_left = 2
 		
 	if jump_pressed and jumps_left > 0:
-		velocity.y = 0
-		velocity.y -= jump_speed 
+		velocity.y = - jump_speed 
 		jumps_left -= 1
 		
 func move():

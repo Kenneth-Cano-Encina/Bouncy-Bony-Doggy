@@ -8,8 +8,8 @@ size = Vector2(39, 60)
 
 [node name="Character" type="CharacterBody2D" unique_id=2044068962]
 script = ExtResource("1_pjt0s")
-speed = 400
-jump_speed = 1200
+speed = 450
+jump_speed = 1100
 gravity_aceleration = 5000
 jumps_left = 2
 
